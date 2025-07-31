@@ -2,12 +2,27 @@ function addTodo(){
     const inputEl = document.getElementById("todo-input");
 
     const textNode = document.createElement("li");
-    const deleteButton = document.createElement("button")
-
     textNode.innerHTML = inputEl.value;
-    const parentsEL = document.getElementById("list");
+    const deleteButton = document.createElement("button")
+    deleteButton.innerText = "Delete"
+    deleteButton.style.marginLeft = "10px"
+    deleteButton.addEventListener("click",function(){
+        textNode.remove();
+    })
+
+
+    
+    const parentsEL = document.getElementById("listt");
     parentsEL.appendChild(textNode);
-    parentsEL.appendChild(deleteButton)
+    textNode.appendChild(deleteButton);
+    
 
 
 }
+
+const interKey = document.getElementById("todo-input");
+interKey.addEventListener('keydown', function(event){
+    if(event.key === 'Enter'){
+        addTodo();
+    }
+})
