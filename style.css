@@ -2,30 +2,9 @@ body {
   background-color: whitesmoke;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
   font-family: sans-serif;
-  min-height: 10vh;
   margin: 0;
-}
-
-#input-container {
-  display: flex;
-  justify-content: center;
-}
-
-#listt {
-  width: auto;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  /* justify-content: space-around; */
-  flex-direction: column;
-  padding-left: 20px;
-  padding-right: 50px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  /* border-radius: 10px;
-    border: 5px solid #e0bfbf; */
 }
 
 #header {
@@ -33,32 +12,28 @@ body {
   margin-bottom: 20px;
   width: 100%;
   text-align: center;
-  text-shadow: 2px 2px 4px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   color: gold;
-  height: 100px;
-  /* border: 30px solid #e0bfbf; */
+  padding: 10px 0;
 }
 
 #header h1 {
   font-size: 38px;
+  margin: 0;
 }
 
-#button {
-  background-color: pink;
-  cursor: pointer;
-  color: antiquewhite;
-  padding: 5px 7.5px;
-  font-size: 16px;
-  border-radius: 10px;
-  padding-left: 10px;
-  margin-left: 5px;
+#container {
+  width: 90%;
+  max-width: 600px;
 }
 
-/* #button:hover{
-    background-color: pink;
-} */
+#input-container {
+  display: flex;
+  margin-bottom: 20px;
+}
 
 #todo-input {
+  flex-grow: 1; /* Allows input to take up available space */
   color: brown;
   background-color: blanchedalmond;
   border: 1px solid #e0bfbf;
@@ -67,76 +42,70 @@ body {
   border-radius: 10px;
 }
 
-#listt li button {
+#add-button {
   background-color: pink;
   cursor: pointer;
   color: antiquewhite;
-  padding: 5px 7.5px;
+  border: none;
   font-size: 16px;
   border-radius: 10px;
-  padding-left: 10px;
-  margin-left: 5px;
+  padding: 10px 15px;
+  margin-left: 10px;
+  transition: background-color 0.2s;
 }
 
-#listt li button:hover {
-  background-color: pink;
+#add-button:hover {
+  background-color: #f78fb3; /* A slightly darker pink */
 }
 
-#listt li {
+#list-container ol {
+  list-style-type: decimal; /* Ensures numbers are shown */
+  padding-left: 20px; /* Provides space for list numbers */
+}
+
+#list-container li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   background: rgb(195, 193, 193);
-  margin-bottom: 5px;
+  color: #333;
+  margin-bottom: 8px;
   border-radius: 10px;
-  /* display: flex; */
-  /* justify-content: space-between; */
-  align-items: center;
-  padding-left: 10px;
+  padding: 10px 15px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#container {
-  width: 90%;
-  max-width: 600px;
+#list-container li button {
+  background-color: pink;
+  cursor: pointer;
+  color: antiquewhite;
+  border: none;
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 5px 10px;
 }
 
-.video-container {
-  width: 100%; /* Or any width you want */
-  max-width: 800px;
-  margin: 20px auto; /* Centers the container on the page */
-  border-radius: 10px;
-  overflow: hidden; /* Ensures the iframe corners are also rounded */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+#time-word {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
+
+#time-word h4 {
+  font-size: 32px;
+  color: #1abc9c; /* A nice teal/aquamarine color */
+  margin: 0;
+}
+
 #clock {
+  margin-top: 15px;
   padding: 20px 40px;
   background-color: #ffffff;
   color: #2c3e50;
   font-size: 2.5rem;
   font-weight: 600;
-  text-align: center;
-
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-
-  transition: all 0.3s ease;
-  margin-top: 20px;
-}
-
-#clock:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-#time-word {
-  background-color: antiquewhite;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  text-shadow: 1px 1px 2px;
-}
-#time-word h4 {
-  font-size: 32px;
-  color: aquamarine;
 }

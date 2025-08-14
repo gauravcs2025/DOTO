@@ -1,24 +1,33 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <title>Today's Target</title>
   </head>
   <body>
     <div id="header">
       <h1>Today's Target you have to achieve</h1>
     </div>
+
     <div id="container">
       <div id="input-container">
-        <input type="text" id="todo-input" placeholder="Goals" />
-        <button onclick="addTodo()" id="button">add</button>
+        <input type="text" id="todo-input" placeholder="Enter a new goal..." />
+        <button id="add-button">Add</button>
+      </div>
+
+      <div id="list-container">
+        <ol id="todo-list-ol"></ol>
       </div>
     </div>
-    <div id="listt">
-      <ol></ol>
-    </div>
+
     <div id="time-word">
       <h4>Time is running, Do not die average</h4>
     </div>
+
     <div id="clock"></div>
+
     <script src="script.js"></script>
   </body>
 </html>
