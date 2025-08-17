@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const addButton = document.getElementById("add-button");
 
   // The URL of your running backend server
-  const API_URL = "http://localhost:3000";
+  const API_URL = "https://doto-mvkd.onrender.com/";
 
   // --- Functions that talk to the Backend API ---
 
