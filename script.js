@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const listEl = document.getElementById("todo-list-ol");
   const addButton = document.getElementById("add-button");
 
-  // The URL of your running backend server
-  const API_URL = "https://doto-mvkd.onrender.com/";
+  // The URL of your running backend server (no trailing slash)
+  const API_URL = "https://doto-mvkd.onrender.com";
 
   // --- Functions that talk to the Backend API ---
 
