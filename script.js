@@ -87,3 +87,29 @@ document.addEventListener("DOMContentLoaded", function () {
   setInterval(updateClock, 1000);
   updateClock();
 });
+// Get the HTML element where the date will be displayed
+const dateEl = document.getElementById("date");
+
+// Function to update the date
+function updateDate() {
+  const now = new Date();
+
+  // Define options for a long, readable date format
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+
+  // Set the text content using the toLocaleDateString method
+  // "en-IN" is used for the India (English) locale
+  dateEl.textContent = now.toLocaleDateString("en-IN", options);
+}
+
+// Call the function to display the date immediately on page load
+updateDate();
+
+// Optional: Update the date every minute to automatically
+// change it if the page is left open past midnight.
+setInterval(updateDate, 60000);
