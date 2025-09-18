@@ -1,24 +1,102 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const jwt = require("jsonwebtoken");
 
-// Use environment port or 3000
+const JWT_SERCET = "Password";
+
 const port = process.env.PORT || 3000;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// In-memory "database"
+let users = [];
+
 let todos = [
   { id: 1, text: "Connect frontend to backend", completed: false },
   { id: 2, text: "Run the server", completed: false },
 ];
 let nextId = 3;
 
-// Routes
+app.post("/signup", function (req, res) {
+  const username = req.body.username;
+  const password = req.body.password;
 
-// Get all todos
+  if (users.find((user) => user.username === username)) {
+    return res.json({
+      message: "You are already signed in",
+    });
+  }
+
+  users.push({
+    username: username,
+    password: password,
+  });
+
+  res.json({
+    message: "You are signed up successfully",
+  });
+});
+
+app.post("/signin", function (req, res) {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  const foundUser = users.find(
+    (user) => user.username === username && user.password === password
+  );
+  if (foundUser) {
+    const token = jwt.sign(
+      {
+        username: foundUser.username,
+      },
+      JWT_SERCET
+    );
+    return res.json({
+      message: "You have signed in successfully",
+      token: token,
+    });
+  } else {
+    return res.json({
+      message: "Inavalid username or password",
+    });
+  }
+});
+
+function auth(req, res, next) {
+  const token = req.headers.authorization;
+
+  if (!token) {
+    return res.json({
+      message: "TOken is missing!",
+    });
+  }
+
+  try {
+    const decodedData = jwt.verify(token, JWT_SERCET);
+
+    req.username = decodedData.username;
+    next();
+  } catch (error) {
+    return res.json({
+      message: "Invalid Token",
+    });
+  }
+}
+
+app.get("/me", auth, function (req, res) {
+  const currentUser = req.username;
+
+  const foundUser = users.find((user) => user.username === currentUser);
+
+  if (foundUser) {
+    return res.json({
+      Username: "foundUser.username",
+      Password: "foundUser.password",
+    });
+  }
+});
+
 app.get("/todos", (req, res) => {
   console.log("GET /todos: Sending current todos");
   res.json(todos);
@@ -71,7 +149,6 @@ app.patch("/todos/:id", (req, res) => {
   console.log(`PATCH /todos/${idToUpdate}: Updated`, todo);
 });
 
-// Start server
 app.listen(port, () => {
   console.log(`🚀 Backend live at http://localhost:${port}`);
 });
