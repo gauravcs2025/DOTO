@@ -1,4 +1,4 @@
-var userEmail = localStorage.getItem("user_email") || "guest";
+var userEmail = localStorage.getItem("user_email");
 var cartCount = 1;
 var url = window.location.href;
 var title = document.title;

@@ -1,4 +1,4 @@
-var userEmail = localStorage.getItem("user_email") || "guest";
+var userEmail = localStorage.getItem("user_email");
 var selectedItems = localStorage?.getItem("selectedItems");
 var childrenArray = [];
 var products = [];

@@ -24,7 +24,7 @@ document.querySelectorAll(".product-button").forEach((item, index) => {
 
         // --- CHANGE 1: GET EMAIL FROM STORAGE ---
         // Assuming you saved it as 'user_email' in the previous step
-        var userEmail = localStorage.getItem("user_email") || "guest"; 
+        var userEmail = localStorage.getItem("user_email"); 
 
         adobeDataLayer.push({
             "event": "aa-addToCart",
