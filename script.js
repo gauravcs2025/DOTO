@@ -229,3 +229,30 @@ var region =  document.getElementById("address");
 
 });
 
+document.getElementById('category').addEventListener('change',(e)=>{
+    var click =0;
+
+    document.getElementById('laptopName').classList.remove('hide');
+
+    document.getElementById('laptopName').addEventListener('change',(e)=>{
+        document.getElementById('ram').classList.remove('hide');
+    });
+    document.getElementById('ram').addEventListener('change',(e)=>{
+        
+        if(click>0) return;
+
+        adobeDataLayer.push({
+            "event":"dropDown",
+            "metrics":"dropDown,laptop-dropDown",
+            "dropDownData":{
+                "laptopCategory":document.getElementById('selectCategory').value,
+                "laptopName":document.getElementById('selectName').value,
+                "laptopRam":document.getElementById('selectRam').value
+            }
+
+        });
+        click=click+1;
+
+    })
+
+});
