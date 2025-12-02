@@ -25,6 +25,7 @@ document.querySelectorAll(".product-button").forEach((item, index) => {
         // --- CHANGE 1: GET EMAIL FROM STORAGE ---
         // Assuming you saved it as 'user_email' in the previous step
         var userEmail = localStorage.getItem("user_email"); 
+        var cleanPrice = parseFloat(price.replace('$', '').trim());
 
         adobeDataLayer.push({
             "event": "aa-addToCart",
@@ -35,9 +36,9 @@ document.querySelectorAll(".product-button").forEach((item, index) => {
             },
             "cart": {
                 "productCategory": title === "HP Pavilion" ? "Hp Laptops" : "dell Laptops",
-                "productId": title === "HP Pavilion" ? "15678905432" : "2132342456",
-                "quantity": "1",
-                "productPrice": price,
+                "productId": title === "HP Pavilion" ? 15678905432 : 2132342456,
+                "quantity": 1,
+                "productPrice": cleanPrice,
                 "productName": title
             }
         });
